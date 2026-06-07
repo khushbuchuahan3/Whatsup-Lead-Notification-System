@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #f0f4f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      padding: 24px 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      color: #1a202c;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #718096;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 5px;
+      margin-top: 14px;
+    }
+
+    label span { color: #e53e3e; }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #2d3748;
+      background: #f7fafc;
+      transition: border 0.2s;
+      outline: none;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #4299e1;
+      background: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 13px;
+      background: #2b6cb0;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+
+    button:hover { background: #2c5282; }
+    button:disabled { background: #90cdf4; cursor: not-allowed; }
+
+    .toast {
+      display: none;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .toast.success { background: #c6f6d5; color: #276749; display: block; }
+    .toast.error   { background: #fed7d7; color: #9b2c2c; display: block; }
+
+    .wa-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 12px;
+      color: #a0aec0;
+    }
+
+    .wa-badge svg { width: 16px; height: 16px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">📋</div>
+    <h1>Get In Touch</h1>
+    <p class="subtitle">Fill the form and our team will contact you shortly.</p>
+
+    <form id="leadForm" novalidate>
+
+      <div class="row">
+        <div>
+          <label for="name">Full Name <span>*</span></label>
+          <input type="text" id="name" placeholder="John Smith" required />
+        </div>
+        <div>
+          <label for="company">Company Name</label>
+          <input type="text" id="company" placeholder="Acme Pvt Ltd" />
+        </div>
+      </div>
+
+      <label for="phone">Phone Number <span>*</span></label>
+      <input type="tel" id="phone" placeholder="+91 98765 43210" required />
+
+      <div class="row">
+        <div>
+          <label for="city">City <span>*</span></label>
+          <input type="text" id="city" placeholder="Mumbai" required />
+        </div>
+        <div>
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="Street / Area" />
+        </div>
+      </div>
+
+      <label for="requirement">Your Requirement <span>*</span></label>
+      <textarea id="requirement" placeholder="Describe what you are looking for…" required></textarea>
+
+      <button type="submit" id="submitBtn">Send Enquiry</button>
+
+      <div class="toast" id="toast"></div>
+
+      <div class="wa-badge">
+        <svg viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.118 1.527 5.845L0 24l6.335-1.502A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.214-3.727.883.934-3.613-.235-.372A9.818 9.818 0 1112 21.818z"/>
+        </svg>
+        Enquiry will be sent directly to our team via WhatsApp
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('leadForm');
+    const btn  = document.getElementById('submitBtn');
+    const toast = document.getElementById('toast');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      toast.className = 'toast';
+      toast.textContent = '';
+
+      const name        = document.getElementById('name').value.trim();
+      const company     = document.getElementById('company').value.trim();
+      const phone       = document.getElementById('phone').value.trim();
+      const city        = document.getElementById('city').value.trim();
+      const address     = document.getElementById('address').value.trim();
+      const requirement = document.getElementById('requirement').value.trim();
+
+      if (!name || !phone || !city || !requirement) {
+        toast.textContent = 'Please fill all required fields (marked with *).';
+        toast.className = 'toast error';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, company, phone, city, address, requirement })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          toast.textContent = '✅ ' + data.message;
+          toast.className = 'toast success';
+          form.reset();
+        } else {
+          toast.textContent = '❌ ' + data.message;
+          toast.className = 'toast error';
+        }
+      } catch {
+        toast.textContent = '❌ Network error. Please try again.';
+        toast.className = 'toast error';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Enquiry';
+      }
+    });
+  </script>
+</body>
+</html>
