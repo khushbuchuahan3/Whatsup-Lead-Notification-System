@@ -1,0 +1,8 @@
+# Environment variables (contains Twilio credentials — NEVER commit)
+.env
+
+# Dependencies (install with npm install)
+node_modules/
+
+# OS files
+.DS_Store
